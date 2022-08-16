@@ -1,9 +1,8 @@
-FROM golang:1.17-alpine as builder
+FROM golang:1.19-alpine as builder
 
 WORKDIR /
-COPY ./src ./src
-ENV GO111MODULE=off
-RUN go build -o dedibackup_poller ./src
+COPY . .
+RUN go build -o dedibackup_poller github.com/Artheriom/dedibox-backup-monitoring/cmd
 
 
 FROM alpine:latest
