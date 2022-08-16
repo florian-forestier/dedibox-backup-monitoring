@@ -4,25 +4,25 @@ A simple tool who reads API from Online.net and parse them into a Prometheus-com
 
 ## How to use it ?
 
-### From DockerHub:
+### From DockerHub
 
 `docker run -p 9101:9101 -e DEDIBOX_API_TOKEN=<YOUR_TOKEN> artheriom/dedibox-backup-monitoring:v1.0.0`
 
-### From sources:
+### From sources
 
 * For Docker: `docker build -t="dedibackup_poller:latest" .`
 * Golang: `go build -o dedibackup_poller github.com/Artheriom/dedibox-backup-monitoring/cmd`
 
 ### Parameters
 
-There is only two parameters:
+There is only three parameters:
 
-* `DEDIBOX_API_TOKEN` (or `-token` command-line argument): Your Dedibox API token. You can generate
-  one [here](https://console.online.net/fr/api/access).
+* `DEDIBOX_API_TOKEN` (or `-token` command-line argument): Your Dedibox API token. You can generate one [here](https://console.online.net/fr/api/access).
     * Make sure to **never** share this token!
 * `-port`: Specify a port to bind on. Default is `9101`, as `9100` is used by Prometheus Node Exporter.
+* `-apiUrl` : Specify a custom URL for Online API (eg. for testing, or if you are behind a proxy). Default is `https://api.online.net/api`.
 
-* Metrics will be available under `/metrics` path.
+Metrics will be available under `/metrics` path.
 
 ## Example
 

@@ -20,7 +20,7 @@ func GetMetrics() (result string, err error) {
 	}
 
 	// Retrieve server list
-	servers, err := connectors.GetURL[[]string]("https://api.online.net/api/v1/server", headers, 200)
+	servers, err := connectors.GetURL[[]string](helpers.DediboxApi+"/v1/server", headers, 200)
 	if err != nil {
 		return
 	}
@@ -29,7 +29,7 @@ func GetMetrics() (result string, err error) {
 	for _, k := range servers {
 		serverId := strings.Split(k, "/")
 
-		data, err := connectors.GetURL[structures.BackupStatus]("https://api.online.net/api/v1/server/backup/"+serverId[len(serverId)-1], headers, 200)
+		data, err := connectors.GetURL[structures.BackupStatus](helpers.DediboxApi+"/v1/server/backup/"+serverId[len(serverId)-1], headers, 200)
 		if err != nil {
 			return "", err
 		}
