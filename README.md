@@ -15,12 +15,13 @@ A simple tool who reads API from Online.net and parse them into a Prometheus-com
 
 ### Parameters
 
-There is only three parameters:
+There is only four parameters:
 
 * `DEDIBOX_API_TOKEN` (or `-token` command-line argument): Your Dedibox API token. You can generate one [here](https://console.online.net/fr/api/access).
     * Make sure to **never** share this token!
 * `-port`: Specify a port to bind on. Default is `9101`, as `9100` is used by Prometheus Node Exporter.
 * `-apiUrl` : Specify a custom URL for Online API (eg. for testing, or if you are behind a proxy). Default is `https://api.online.net/api`.
+* `-pathPrefix` : Specify root context for the server. Useful if the server is not directly at root path. Default is ``.
 
 Metrics will be available under `/metrics` path.
 

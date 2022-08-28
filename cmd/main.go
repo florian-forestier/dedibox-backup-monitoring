@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/metrics", controllers.GetMetrics)
+	http.HandleFunc(helpers.PathPrefix+"/metrics", controllers.GetMetrics)
 
 	logrus.Infof("Server is starting on port %d", helpers.Port)
 	logrus.Fatal(http.ListenAndServe(":"+strconv.Itoa(helpers.Port), nil))
